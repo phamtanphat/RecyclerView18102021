@@ -83,7 +83,7 @@ public class FoodModel {
                 '}';
     }
 
-    public List<FoodModel> getMock(){
+    public static List<FoodModel> getMock(){
         return Arrays.asList(
                 new FoodModel("Phá Lấu Cô Mai - Tôn Đản","266/77 Tôn Đản P. 4, Quận 4, TP. HCM",BusinessType.BISTRO,1.5f,4.5f,R.drawable.hinh_phalaucomai),
                 new FoodModel("Bếp Bà Muối - Ăn Vặt Online","606/52 Đường 3 Tháng 2, P. 14, Quận 10, TP. HCM",BusinessType.SHOP_ONLINE,2.5f,4.5f,R.drawable.hinh_bepbamuoi),

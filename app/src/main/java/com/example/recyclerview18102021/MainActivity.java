@@ -21,9 +21,13 @@ public class MainActivity extends AppCompatActivity {
         mRcvFood = findViewById(R.id.recyclerViewFood);
 
 
-        mListFood = new ArrayList<>();
+        mListFood = FoodModel.getMock();
 
+        mFoodAdapter = new FoodAdapter(mListFood,this);
 
+        mRcvFood.setHasFixedSize(true);
+        mRcvFood.setAdapter(mFoodAdapter);
+        
 
     }
 
