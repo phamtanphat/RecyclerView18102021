@@ -58,5 +58,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             tvDistance = itemView.findViewById(R.id.textViewDistance);
             tvRate = itemView.findViewById(R.id.textViewRating);
         }
+
+        public void bind(FoodModel foodModel){
+            img.setImageResource(foodModel.getImage());
+            tvName.setText(foodModel.getName());
+            tvAddress.setText(foodModel.getAddress());
+            tvDistance.setText(foodModel.getDistance() + " km");
+            tvRate.setText(foodModel.getRate() + "");
+            tvBusinessType.setText(foodModel.getBusinessType().toString());
+        }
     }
 }
