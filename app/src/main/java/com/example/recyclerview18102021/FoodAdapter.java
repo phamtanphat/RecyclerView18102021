@@ -1,5 +1,7 @@
 package com.example.recyclerview18102021;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -8,13 +10,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder>{
 
+    private List<FoodModel> listFoods;
+    private Context context;
+
+    public FoodAdapter(List<FoodModel> listFoods,Context context){
+        this.listFoods = listFoods;
+        this.context = context;
+    }
 
     @NonNull
     @Override
     public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View view = layoutInflater.inflate(R.layout.item_food,parent,false);
+        return new FoodViewHolder(view);
     }
 
     @Override
@@ -24,7 +37,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (listFoods == null || listFoods.size() == 0){
+            return 0;
+        }
+        return listFoods.size();
     }
 
     class FoodViewHolder extends RecyclerView.ViewHolder {
