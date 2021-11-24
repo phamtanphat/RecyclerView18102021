@@ -1,6 +1,8 @@
 package com.example.recyclerview18102021;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class FoodModel {
@@ -83,23 +85,26 @@ public class FoodModel {
                 '}';
     }
 
-    public static List<FoodModel> getMock(){
+    // non access modifier
+
+    public static List<FoodModel> getMock() {
+        // Tạo 1 mảng chưa các object ở bên trong
         return Arrays.asList(
-                new FoodModel("Phá Lấu Cô Mai - Tôn Đản","266/77 Tôn Đản P. 4, Quận 4, TP. HCM",BusinessType.BISTRO,1.5f,4.5f,R.drawable.hinh_phalaucomai),
-                new FoodModel("Bếp Bà Muối - Ăn Vặt Online","606/52 Đường 3 Tháng 2, P. 14, Quận 10, TP. HCM",BusinessType.SHOP_ONLINE,2.5f,4.5f,R.drawable.hinh_bepbamuoi),
-                new FoodModel("Tâm Ký II - Cơm Chiên & Nui Xào - Lương Định Của","Hẻm 281A Lương Định Của, P. An Phú, Quận 2, TP. HCM",BusinessType.BISTRO,3.5f,4.5f,R.drawable.hinh_tamky2),
-                new FoodModel("PyPo Food - Bắp Xào Trứng Muối Sốt Phô Mai","266/18A Tôn Đản, P. 8, Quận 4, TP. HCM",BusinessType.BISTRO,4.5f,5.0f,R.drawable.hinh_pypofood),
-                new FoodModel("Crab Restaurant - Chuyên Các Món Cua","Tầng 2, Tầng 2, 304 Tôn Thất Hiệp, P. 12, Quận 11, TP. HCM",BusinessType.RESTAURANT,1.5f,4.5f,R.drawable.hinh_crabrestaurant),
-                new FoodModel("Anh Quán - Mì Khô Gà Quay & Hủ Tiếu Mì Sủi Cảo","80/17/138 Dương Quảng Hàm, P. 5, Gò Vấp, TP. HCM",BusinessType.BISTRO,2.5f,4.5f,R.drawable.hinh_anhquan),
-                new FoodModel("Xiên Que Ngon","15/45A Cầu Xéo, P. Tân Sơn Nhì, Tân Phú, TP. HCM",BusinessType.SHOP_ONLINE,3.5f,3.5f,R.drawable.hinh_xienquengon),
-                new FoodModel("Đô Na - Quán Ốc","237/40 Trần Văn Đang, Quận 3, TP. HCM",BusinessType.BISTRO,4.5f,4.5f,R.drawable.hinh_dona),
-                new FoodModel("Minh Thư 8 - Cơm Gà Xối Mỡ, Cơm Trắng & Phở","218 Hoàng Diệu 2, P. Linh Chiểu, Thủ Đức, TP. HCM",BusinessType.BISTRO,2.5f,4.5f,R.drawable.hinh_minhthu8),
-                new FoodModel("Kimbap Hoàng Tử - Món Hàn Quốc - Lê Văn Sỹ","337/2 Lê Văn Sỹ, P.1, Tân Bình, TP. HCM",BusinessType.BISTRO,4.5f,5.0f,R.drawable.hinh_kimbaphoangtu),
-                new FoodModel("Sức Sống Mới - Nước Ép & Sinh Tố - Lê Lợi","27 Lê Lợi, P. 4, Gò Vấp, TP. HCM",BusinessType.BISTRO,2.5f,4.5f,R.drawable.hinh_sucsongmoi),
-                new FoodModel("Cơm Sườn Nướng 102 - Đường Số 2","79 Đường Số 2, P. Hiệp Bình Phước, Thủ Đức, TP. HCM",BusinessType.BISTRO,2.5f,4.5f,R.drawable.hinh_comsuonnuong),
-                new FoodModel("Royaltea - Trần Hưng Đạo","391TK44/23 Trần Hưng Đạo, P. Cầu Kho, Quận 1, TP. HCM",BusinessType.BISTRO,3.5f,5.0f,R.drawable.hinh_royaltea),
-                new FoodModel("Japanit Matcha & Coffee House - Trần Hưng Đạo","130 Trần Hưng Đạo, P. Phạm Ngũ Lão, Quận 1, TP. HCM",BusinessType.BISTRO,4.5f,4.5f,R.drawable.hinh_japanitmatcha),
-                new FoodModel("TocoToco Bubble Tea - Phạm Hùng","179 Phạm Hùng, P. 4, Quận 8, TP. HCM",BusinessType.BISTRO,4.5f,4.5f,R.drawable.hinh_tocotoco)
+                new FoodModel("Phá Lấu Cô Mai - Tôn Đản", "266/77 Tôn Đản P. 4, Quận 4, TP. HCM", BusinessType.BISTRO, 1.5f, 4.5f, R.drawable.hinh_phalaucomai),
+                new FoodModel("Bếp Bà Muối - Ăn Vặt Online", "606/52 Đường 3 Tháng 2, P. 14, Quận 10, TP. HCM", BusinessType.SHOP_ONLINE, 2.5f, 4.5f, R.drawable.hinh_bepbamuoi),
+                new FoodModel("Tâm Ký II - Cơm Chiên & Nui Xào - Lương Định Của", "Hẻm 281A Lương Định Của, P. An Phú, Quận 2, TP. HCM", BusinessType.BISTRO, 3.5f, 4.5f, R.drawable.hinh_tamky2),
+                new FoodModel("PyPo Food - Bắp Xào Trứng Muối Sốt Phô Mai", "266/18A Tôn Đản, P. 8, Quận 4, TP. HCM", BusinessType.BISTRO, 4.5f, 5.0f, R.drawable.hinh_pypofood),
+                new FoodModel("Crab Restaurant - Chuyên Các Món Cua", "Tầng 2, Tầng 2, 304 Tôn Thất Hiệp, P. 12, Quận 11, TP. HCM", BusinessType.RESTAURANT, 1.5f, 4.5f, R.drawable.hinh_crabrestaurant),
+                new FoodModel("Anh Quán - Mì Khô Gà Quay & Hủ Tiếu Mì Sủi Cảo", "80/17/138 Dương Quảng Hàm, P. 5, Gò Vấp, TP. HCM", BusinessType.BISTRO, 2.5f, 4.5f, R.drawable.hinh_anhquan),
+                new FoodModel("Xiên Que Ngon", "15/45A Cầu Xéo, P. Tân Sơn Nhì, Tân Phú, TP. HCM", BusinessType.SHOP_ONLINE, 3.5f, 3.5f, R.drawable.hinh_xienquengon),
+                new FoodModel("Đô Na - Quán Ốc", "237/40 Trần Văn Đang, Quận 3, TP. HCM", BusinessType.BISTRO, 4.5f, 4.5f, R.drawable.hinh_dona),
+                new FoodModel("Minh Thư 8 - Cơm Gà Xối Mỡ, Cơm Trắng & Phở", "218 Hoàng Diệu 2, P. Linh Chiểu, Thủ Đức, TP. HCM", BusinessType.BISTRO, 2.5f, 4.5f, R.drawable.hinh_minhthu8),
+                new FoodModel("Kimbap Hoàng Tử - Món Hàn Quốc - Lê Văn Sỹ", "337/2 Lê Văn Sỹ, P.1, Tân Bình, TP. HCM", BusinessType.BISTRO, 4.5f, 5.0f, R.drawable.hinh_kimbaphoangtu),
+                new FoodModel("Sức Sống Mới - Nước Ép & Sinh Tố - Lê Lợi", "27 Lê Lợi, P. 4, Gò Vấp, TP. HCM", BusinessType.BISTRO, 2.5f, 4.5f, R.drawable.hinh_sucsongmoi),
+                new FoodModel("Cơm Sườn Nướng 102 - Đường Số 2", "79 Đường Số 2, P. Hiệp Bình Phước, Thủ Đức, TP. HCM", BusinessType.BISTRO, 2.5f, 4.5f, R.drawable.hinh_comsuonnuong),
+                new FoodModel("Royaltea - Trần Hưng Đạo", "391TK44/23 Trần Hưng Đạo, P. Cầu Kho, Quận 1, TP. HCM", BusinessType.BISTRO, 3.5f, 5.0f, R.drawable.hinh_royaltea),
+                new FoodModel("Japanit Matcha & Coffee House - Trần Hưng Đạo", "130 Trần Hưng Đạo, P. Phạm Ngũ Lão, Quận 1, TP. HCM", BusinessType.BISTRO, 4.5f, 4.5f, R.drawable.hinh_japanitmatcha),
+                new FoodModel("TocoToco Bubble Tea - Phạm Hùng", "179 Phạm Hùng, P. 4, Quận 8, TP. HCM", BusinessType.BISTRO, 4.5f, 4.5f, R.drawable.hinh_tocotoco)
         );
     }
 }

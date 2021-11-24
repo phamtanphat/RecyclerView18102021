@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +24,19 @@ public class MainActivity extends AppCompatActivity {
 
         mListFood = FoodModel.getMock();
 
-        mFoodAdapter = new FoodAdapter(mListFood,this);
+        mFoodAdapter = new FoodAdapter(mListFood,MainActivity.this);
 
+        // Tính toán trước cái kích thước của item để hiển thị nhanh hơn
         mRcvFood.setHasFixedSize(true);
         mRcvFood.setAdapter(mFoodAdapter);
         
 
+        mFoodAdapter.bindOnItemFoodClickListener(new OnItemFoodClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(MainActivity.this, mListFood.get(position).getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

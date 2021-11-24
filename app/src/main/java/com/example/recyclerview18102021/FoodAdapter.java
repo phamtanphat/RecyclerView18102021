@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     private List<FoodModel> listFoods;
     private Context context;
+    private OnItemFoodClickListener onItemFoodClickListener;
 
     public FoodAdapter(List<FoodModel> listFoods,Context context){
         this.listFoods = listFoods;
@@ -43,6 +45,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         return listFoods.size();
     }
 
+    //ViewHolder quản lý view cho item
     class FoodViewHolder extends RecyclerView.ViewHolder {
 
         ImageView img;
@@ -57,6 +60,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             tvBusinessType = itemView.findViewById(R.id.textViewCategory);
             tvDistance = itemView.findViewById(R.id.textViewDistance);
             tvRate = itemView.findViewById(R.id.textViewRating);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // vị trí của item làm sao để có
+//                    Toast.makeText(context, listFoods.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+                    if (onItemFoodClickListener != null){
+                        onItemFoodClickListener.onClick(getAdapterPosition());
+                    }
+                }
+            });
         }
 
         public void bind(FoodModel foodModel){
@@ -67,5 +81,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             tvRate.setText(foodModel.getRate() + "");
             tvBusinessType.setText(foodModel.getBusinessType().toString());
         }
+    }
+    public void bindOnItemFoodClickListener(OnItemFoodClickListener onItemFoodClickListener){
+        this.onItemFoodClickListener = onItemFoodClickListener;
     }
 }
