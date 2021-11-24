@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRcvFood;
     List<FoodModel> mListFood;
     FoodAdapter mFoodAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,19 +24,23 @@ public class MainActivity extends AppCompatActivity {
         mRcvFood = findViewById(R.id.recyclerViewFood);
 
 
-        mListFood = FoodModel.getMock();
+        mListFood = new ArrayList<>();
+        mListFood.addAll(FoodModel.getMock());
 
-        mFoodAdapter = new FoodAdapter(mListFood,MainActivity.this);
+        mFoodAdapter = new FoodAdapter(mListFood, MainActivity.this);
 
         // Tính toán trước cái kích thước của item để hiển thị nhanh hơn
         mRcvFood.setHasFixedSize(true);
         mRcvFood.setAdapter(mFoodAdapter);
-        
+
 
         mFoodAdapter.bindOnItemFoodClickListener(new OnItemFoodClickListener() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(MainActivity.this, mListFood.get(position).getName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Xóa " + mListFood.get(position).getName(), Toast.LENGTH_SHORT).show();
+                Log.d("BBB",mListFood.size() + "");
+                mListFood.remove(position);
+                mFoodAdapter.notifyItemRemoved(position);
             }
         });
     }
