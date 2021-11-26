@@ -19,6 +19,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     private Context context;
     private OnItemFoodClickListener onItemFoodClickListener;
 
+    private int LOADING_TYPE = 0;
+    private int ITEM_TYPE = 1;
+
+
     public FoodAdapter(List<FoodModel> listFoods,Context context){
         this.listFoods = listFoods;
         this.context = context;
