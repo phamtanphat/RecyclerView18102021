@@ -57,7 +57,9 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-//        holder.bind(listFoods.get(position));
+        if (holder.getItemViewType() == ITEM_TYPE){
+            ((FoodViewHolder)holder).bind(listFoods.get(position));
+        }
     }
 
     @Override
