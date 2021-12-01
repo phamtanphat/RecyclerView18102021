@@ -119,4 +119,14 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public void bindOnItemFoodClickListener(OnItemFoodClickListener onItemFoodClickListener){
         this.onItemFoodClickListener = onItemFoodClickListener;
     }
+    public void addFooterLoading(){
+        isLoading = true;
+        listFoods.add(null);
+    }
+    public void removeFooterLoading(){
+        isLoading = false;
+        int position = listFoods.size() - 1;
+        listFoods.remove(position);
+        notifyItemRemoved(position);
+    }
 }
