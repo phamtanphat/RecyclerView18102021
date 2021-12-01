@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     List<FoodModel> mListFood;
     FoodAdapter mFoodAdapter;
     int mCurrentPage = 1;
-    int mLastPage = 10;
+    int mTotalPage = 10;
     boolean mIsLoading =  false;
     boolean mIsLastPage = false;
 
@@ -76,6 +76,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 mFoodAdapter.removeFooterLoading();
+                int position = mListFood.size() - 1;
+                List<FoodModel> foodModels = FoodModel.getMock();
+                mListFood.addAll(foodModels);
+                mFoodAdapter.notifyItemRangeChanged(position,foodModels.size());
+                foodModels = null;
+                mIsLoading = false;
+
+                if (mCurrentPage < mTotalPage){
+                    mFoodAdapter.addFooterLoading();
+                }else{
+                    mIsLastPage = true;
+                }
+
             }
         },2000);
     }
