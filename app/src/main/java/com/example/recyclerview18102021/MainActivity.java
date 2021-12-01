@@ -34,10 +34,11 @@ public class MainActivity extends AppCompatActivity {
         mListFood.addAll(FoodModel.getMock());
 
         mFoodAdapter = new FoodAdapter(mListFood, MainActivity.this);
-
+        mFoodAdapter.addFooterLoading();
         // Tính toán trước cái kích thước của item để hiển thị nhanh hơn
         mRcvFood.setHasFixedSize(true);
         mRcvFood.setAdapter(mFoodAdapter);
+
 
 
         mFoodAdapter.bindOnItemFoodClickListener(new OnItemFoodClickListener() {
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
+                mFoodAdapter.removeFooterLoading();
             }
         },2000);
     }
