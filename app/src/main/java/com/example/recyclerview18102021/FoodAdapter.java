@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +18,6 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<FoodModel> listFoods;
     private Context context;
     private OnItemFoodClickListener onItemFoodClickListener;
-
     private int LOADING_TYPE = 0;
     private int ITEM_TYPE = 1;
 
@@ -116,13 +114,16 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             progressBar = itemView.findViewById(R.id.progressBar);
         }
     }
+
     public void bindOnItemFoodClickListener(OnItemFoodClickListener onItemFoodClickListener){
         this.onItemFoodClickListener = onItemFoodClickListener;
     }
+
     public void addFooterLoading(){
         isLoading = true;
         listFoods.add(null);
     }
+
     public void removeFooterLoading(){
         isLoading = false;
         int position = listFoods.size() - 1;
